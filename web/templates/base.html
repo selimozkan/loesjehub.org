@@ -80,7 +80,7 @@
           <!-- Footer Text -->
           <div class="footer-text d-flex justify-content-between align-items-center">
             <div class="footer-copy"><a href="#top"><img style="padding:0;margin:0" src="{% static 'images/eu.png' %}" alt="Co-Founded by European Union"></a></div>
-            <div class="footer-copy"><a href="#">Impressum</a>&nbsp;|&nbsp;<a href="#">Privacy Policy</a>&nbsp;|&nbsp;<a href="#">Disclaimer</a></div>
+            <div class="footer-copy"><a href="{% url 'impressum' %}">Impressum</a>&nbsp;|&nbsp;<a href="{% url 'privacy-policy' %}">Privacy Policy</a>&nbsp;|&nbsp;<a href="{% url 'disclaimer' %}">Disclaimer</a></div>
             <div class="footer-copy"><span class="text-muted">Developed by</span> <a href="//ozkanyazilim.com" target="_blank">Ozkisoft</a></div>
           </div>
         </div>

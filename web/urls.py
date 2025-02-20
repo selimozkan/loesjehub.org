@@ -5,12 +5,15 @@ from django.conf.urls.static import static
 from . import views
 
 urlpatterns = [
-  path('', views.HomeView.as_view(), name='index'),
-  path('about/', views.AboutView.as_view(), name='about'),
-  path('partners/', views.PartnersView.as_view(), name='partners'),
-  path('projects/', views.ProjectsView.as_view(), name='projects'),
-  path('resources/', views.ResourcesView.as_view(), name='resources'),
-  path('contact/', views.ContactView.as_view(), name='contact'),
+    path("", views.HomeView.as_view(), name="index"),
+    path("about/", views.AboutView.as_view(), name="about"),
+    path("partners/", views.PartnersView.as_view(), name="partners"),
+    path("projects/", views.ProjectsView.as_view(), name="projects"),
+    path("resources/", views.ResourcesView.as_view(), name="resources"),
+    path("contact/", views.ContactView.as_view(), name="contact"),
+    path("impressum/", views.ImpressumView.as_view(), name="impressum"),
+    path("privacy-policy/", views.PrivacyPolicyView.as_view(), name="privacy-policy"),
+    path("disclaimer/", views.DisclaimerView.as_view(), name="disclaimer"),
 ]
 
 
