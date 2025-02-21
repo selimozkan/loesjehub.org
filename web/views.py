@@ -86,7 +86,13 @@ class ImpressumView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["header"] = PageHeader.objects.get(page="impressum")
+        try:
+            context["header"] = PageHeader.objects.get(page="impressum")
+        except PageHeader.DoesNotExist:
+            context["header"] = None
+        context["impressum"] = HomePage.objects.filter().values_list(
+            "impressum", flat=True
+        )
         return context
 
 
