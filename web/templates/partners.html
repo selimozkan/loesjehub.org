@@ -74,7 +74,7 @@
         <div class="row">
             {% for partner in partners %}
             <div class="col-12 article active" id="{{ partner.name }}">
-                {{ partner.long_description }}
+                {{ partner.long_description | safe }}
             </div>
             {% endfor %}
         </div>
