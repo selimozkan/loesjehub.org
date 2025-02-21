@@ -8,10 +8,14 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="wow fadeInUpShort" data-wow-delay=".1s">
-                        <h1 class="hs-line-7 mb-20 mb-xs-10">{{ header.page_title}}</h1>
+                        <h1 class="hs-line-7 mb-20 mb-xs-10">
+                            {% if header.page_title %}{{ header.page_title}}{% else %}About{% endif %}
+                        </h1>
                     </div>
                     <div class="wow fadeInUpShort" data-wow-delay=".2s">
-                        <p class="hs-line-6 opacity-075 mb-20 mb-xs-0">{{ header.page_description}}</p>
+                        <p class="hs-line-6 opacity-075 mb-20 mb-xs-0">
+                            {% if header.page_description %}{{ header.page_description}}{% else %}About us Header Text{% endif %}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -25,7 +29,11 @@
         <div class="container relative">
             <div class="row">
                 <div class="col-12">
-
+                    
+                    {% if about.image %}
+                        <img src="{{ about.image.url }}" alt="LoesjeHub" />
+                    {% endif %}
+                    {{ about.description | safe }}
                 </div>
             </div>
         </div>
@@ -40,10 +48,19 @@
                 <h2 class="section-title">Project Objectives</h2>
             </div>
             
-            <!-- Features Grid -->
+            <!-- Objectives Grid -->
             <div class="row alt-features-grid">
-            
-                <!-- Features Item -->
+                
+                {% for objective in objectives %}
+                {% if forloop.counter == 5 %}
+                <div class="col-sm-12 col-lg-12 d-flex flex-column align-items-center mt-5">
+                    <h3 class="">{{ objective.title }}</h3>
+                    <div class="alt-features-descr">
+                        {{ objective.description }}
+                    </div>
+                </div>
+                {% else %}
+                <!-- Objectives Item -->
                 <div class="col-sm-6 col-lg-3">
                     <div class="alt-features-item text-center wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
                         <div class="alt-features-icon mx-auto">
@@ -51,69 +68,20 @@
                             <path d="M12 0c-3.371 2.866-5.484 3-9 3v11.535c0 4.603 3.203 5.804 9 9.465 5.797-3.661 9-4.862 9-9.465v-11.535c-3.516 0-5.629-.134-9-3zm0 1.292c2.942 2.31 5.12 2.655 8 2.701v10.542c0 3.891-2.638 4.943-8 8.284-5.375-3.35-8-4.414-8-8.284v-10.542c2.88-.046 5.058-.391 8-2.701zm5 7.739l-5.992 6.623-3.672-3.931.701-.683 3.008 3.184 5.227-5.878.728.685z"/>
                             </svg>
                         </div>
-                        <h3 class="alt-features-title">Obective 1</h3>
+                        <h3 class="alt-features-title">{{ objective.title }}</h3>
                         <div class="alt-features-descr">
-                            Fusce aliquet quam eget neque ultrices elementum felis id arcu blandit sagittis. Maecenas volutpat, diam enim.
+                            {{ objective.description }}
                         </div>
                     </div>
                 </div>
-                <!-- End Features Item -->
-                
-                <!-- Features Item -->
-                <div class="col-sm-6 col-lg-3">
-                    <div class="alt-features-item text-center wow fadeScaleIn" data-wow-delay=".1s" data-wow-duration="1s">
-                    <div class="alt-features-icon mx-auto">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-                        <path d="M12 0c-3.371 2.866-5.484 3-9 3v11.535c0 4.603 3.203 5.804 9 9.465 5.797-3.661 9-4.862 9-9.465v-11.535c-3.516 0-5.629-.134-9-3zm0 1.292c2.942 2.31 5.12 2.655 8 2.701v10.542c0 3.891-2.638 4.943-8 8.284-5.375-3.35-8-4.414-8-8.284v-10.542c2.88-.046 5.058-.391 8-2.701zm5 7.739l-5.992 6.623-3.672-3.931.701-.683 3.008 3.184 5.227-5.878.728.685z"/>
-                        </svg>
-                    </div>
-                    <h3 class="alt-features-title">Objective 2</h3>
-                    <div class="alt-features-descr">
-                        Suspendisse ultricies eros blandit. Lorem ipsum dolor sit lorem amet rembe adipis elite Inwege maximus ligula. 
-                    </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-                
-                <!-- Features Item -->
-                <div class="col-sm-6 col-lg-3">
-                    <div class="alt-features-item text-center wow fadeScaleIn" data-wow-delay=".2s" data-wow-duration="1s">
-                    <div class="alt-features-icon mx-auto">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-                        <path d="M12 0c-3.371 2.866-5.484 3-9 3v11.535c0 4.603 3.203 5.804 9 9.465 5.797-3.661 9-4.862 9-9.465v-11.535c-3.516 0-5.629-.134-9-3zm0 1.292c2.942 2.31 5.12 2.655 8 2.701v10.542c0 3.891-2.638 4.943-8 8.284-5.375-3.35-8-4.414-8-8.284v-10.542c2.88-.046 5.058-.391 8-2.701zm5 7.739l-5.992 6.623-3.672-3.931.701-.683 3.008 3.184 5.227-5.878.728.685z"/>
-                        </svg>
-                    </div>
-                    <h3 class="alt-features-title">Objective 3</h3>
-                    <div class="alt-features-descr">
-                        Duis placerat ex gravida nibh tristique porta. Maecenas volutpat, enime volutpa cractus interdum sodales.
-                    </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-                
-                <!-- Features Item -->
-                <div class="col-sm-6 col-lg-3">
-                    <div class="alt-features-item text-center wow fadeScaleIn" data-wow-delay=".3s" data-wow-duration="1s">
-                    <div class="alt-features-icon mx-auto">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd">
-                        <path d="M12 0c-3.371 2.866-5.484 3-9 3v11.535c0 4.603 3.203 5.804 9 9.465 5.797-3.661 9-4.862 9-9.465v-11.535c-3.516 0-5.629-.134-9-3zm0 1.292c2.942 2.31 5.12 2.655 8 2.701v10.542c0 3.891-2.638 4.943-8 8.284-5.375-3.35-8-4.414-8-8.284v-10.542c2.88-.046 5.058-.391 8-2.701zm5 7.739l-5.992 6.623-3.672-3.931.701-.683 3.008 3.184 5.227-5.878.728.685z"/>
-                        </svg>
-                    </div>
-                    <h3 class="alt-features-title">Objective 4</h3>
-                    <div class="alt-features-descr">
-                        Praesent sed nisi eleifend lorem ember fermete acome ante lorem ipsum. Duis gravida nibh tristique porta.
-                    </div>
-                    </div>
-                </div>
-                <!-- End Features Item -->
-                <div class="col-sm-12 col-lg-12 d-flex flex-column align-items-center mt-5">
-                    <h3 class="">Specific Objective</h3>
-                    <div class="alt-features-descr">
-                    Praesent sed nisi eleifend lorem ember fermete acome ante lorem ipsum. Duis gravida nibh tristique porta.
-                    </div>
-                </div>
+                <!-- End Objectives Item -->
+                {% endif %}
+
+
+                {% endfor %}
+
             </div>
-            <!-- End Features Grid -->
+            <!-- End Objectives Grid -->
         </div>
     </section>
     <!-- End Section -->
@@ -121,32 +89,17 @@
     
     <section class="page-section m-0 pt-0 pb-5">
         <div class="container relative">
-            
             <div class="row alt-features-grid">
+                {% for specific_objective in specific_objectives %}
                 <div class="col-sm-12 col-lg-4">
                     <div class="alt-features-item text-center wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
-                        <h3 class="alt-features-title">Project 1</h3>
+                        <h3 class="alt-features-title">{{ specific_objective.title }}</h3>
                         <div class="alt-features-descr">
-                            Fusce aliquet quam eget neque ultrices elementum felis id arcu blandit sagittis. Maecenas volutpat, diam enim.
+                            {{ specific_objective.description }}
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-lg-4">
-                    <div class="alt-features-item text-center wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
-                    <h3 class="alt-features-title">Project 2</h3>
-                    <div class="alt-features-descr">
-                        Fusce aliquet quam eget neque ultrices elementum felis id arcu blandit sagittis. Maecenas volutpat, diam enim.
-                    </div>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-lg-4">
-                    <div class="alt-features-item text-center wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
-                    <h3 class="alt-features-title">Project 3</h3>
-                    <div class="alt-features-descr">
-                        Fusce aliquet quam eget neque ultrices elementum felis id arcu blandit sagittis. Maecenas volutpat, diam enim.
-                    </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </section>

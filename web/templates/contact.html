@@ -2,118 +2,59 @@
 {% load static %}
 
 {% block content %}
-        <!-- Home Section -->
-        <section class="small-section bg-dark-alfa-50 bg-scroll light-content mb-5" data-background="{% get_media_prefix %}{{ header.page_image }}" id="home">
-          <div class="container relative pt-70">
+    <!-- Home Section -->
+    <section class="small-section bg-dark-alfa-50 bg-scroll light-content mb-5" data-background="{% get_media_prefix %}{{ header.page_image }}" id="home">
+        <div class="container relative pt-70">
             <div class="row">
-              <div class="col-md-8">
-                <div class="wow fadeInUpShort" data-wow-delay=".1s">
-                  <h1 class="hs-line-7 mb-20 mb-xs-10">{{ header.page_title}}</h1>
+                <div class="col-md-8">
+                    <div class="wow fadeInUpShort" data-wow-delay=".1s">
+                        <h1 class="hs-line-7 mb-20 mb-xs-10">
+                            {% if header.page_title %}{{ header.page_title}}{% else %}Contact{% endif %}
+                        </h1>
+                    </div>
+                    <div class="wow fadeInUpShort" data-wow-delay=".2s">
+                        <p class="hs-line-6 opacity-075 mb-20 mb-xs-0">
+                            {% if header.page_description %}{{ header.page_description}}{% else %}Contact us at following adressess{% endif %}
+                        </p>
+                    </div>
                 </div>
-                <div class="wow fadeInUpShort" data-wow-delay=".2s">
-                  <p class="hs-line-6 opacity-075 mb-20 mb-xs-0">
-                    {{ header.page_description}}
-                  </p>
-                </div>
-              </div>
             </div>
-          </div>
-        </section>
-        <!-- End Home Section -->
+        </div>
+    </section>
+    <!-- End Home Section -->
 
         <!-- Contact Section -->
         <section class="page-section">
-          <div class="container relative">
-            <div class="row mb-60 mb-xs-40">
-              <div class="col-md-12">
-                <div class="row">
-                  <div class="col-md-6 col-sm-12 gap-1 mb-3">
-                    <div class="card">
-                      <div class="card-body d-flex justify-content-between my-5">
-                        <div class="col-5 border-right d-flex justify-content-center align-items-center">
-                          <img src="{% get_media_prefix %}partners/loesje-berlin.jpg" alt="Loesje Berlin" style="object-fit:cover" />
-                        </div>
-                        <div class="col-7 d-flex flex-column">
-                          <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
-                            <h3>Loesje Berlin</h3>
-                            <div class="ci-text">
-                              <div><i class="fa fa-phone-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>+61 383 767 284</span></div>
-                              <div><i class="fa fa-map-marker-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>245 Quigley Blvd, Ste K</span></div>
-                              <div><i class="fa fa-envelope mr-3 mb-3"></i>&nbsp;&nbsp;<span>info@loesjeberlin.com</span></div>
-                              <div><i class="fa fa-link mr-3"></i>&nbsp;&nbsp;<a class="ci-text" href="#" title="Partner Title" target="_blank">Linktree</a></div>
+            <div class="container relative">
+                <div class="row mb-60 mb-xs-40">
+                    <div class="col-md-12">
+                        <div class="row">
+                            {% for contact in contacts %}
+                            <div class="col-md-6 col-sm-12 gap-1 mb-3">
+                                <div class="card">
+                                    <div class="card-body d-flex justify-content-between my-5">
+                                        <div class="col-5 border-right d-flex justify-content-center align-items-center">
+                                            <img src="{{ contact.image.url }}" alt="{{ contact.title }}" style="object-fit:cover" />
+                                        </div>
+                                        <div class="col-7 d-flex flex-column">
+                                            <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
+                                                <h3>{{ contact.title }}</h3>
+                                                <div class="ci-text">
+                                                    <div><i class="fa fa-phone-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>{{ contact.phone }}</span></div>
+                                                    <div><i class="fa fa-map-marker-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>{{ contact.address }}</span></div>
+                                                    <div><i class="fa fa-envelope mr-3 mb-3"></i>&nbsp;&nbsp;<span>{{ contact.email }}</span></div>
+                                                    <div><i class="fa fa-link mr-3"></i>&nbsp;&nbsp;<a class="ci-text" href="{{ contact.linktree }}" title="{{ contact.title }}" target="_blank">Linktree</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                          </div>
+                            {% endfor %}
                         </div>
-                      </div>
                     </div>
-                  </div>
-                  <div class="col-md-6 col-sm-12 gap-1 mb-3">
-                    <div class="card">
-                      <div class="card-body d-flex justify-content-between my-5">
-                        <div class="col-5 border-right d-flex justify-content-center align-items-center">
-                          <img src="{% get_media_prefix %}partners/loesje-bulgaria.png" alt="Loesje Bulgaria" style="object-fit:cover" />
-                        </div>
-                        <div class="col-7 d-flex flex-column">
-                          <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
-                            <h3>Loesje Bulgaria</h3>
-                            <div class="ci-text">
-                              <div><i class="fa fa-phone-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>+61 383 767 284</span></div>
-                              <div><i class="fa fa-map-marker-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>245 Quigley Blvd, Ste K</span></div>
-                              <div><i class="fa fa-envelope mr-3 mb-3"></i>&nbsp;&nbsp;<span>info@loesjebulgaria.com</span></div>
-                              <div><i class="fa fa-link mr-3"></i>&nbsp;&nbsp;<a class="ci-text" href="#" title="Partner Title" target="_blank">Linktree</a></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
                 </div>
-                <div class="row"> 
-                  <div class="col-md-6 col-sm-12 gap-1 mb-3">
-                    <div class="card">
-                      <div class="card-body d-flex justify-content-between my-5">
-                        <div class="col-5 border-right d-flex justify-content-center align-items-center">
-                          <img src="{% get_media_prefix %}partners/loesje-bitola.png" alt="Loesje Bitola" style="object-fit:cover" />
-                        </div>
-                        <div class="col-7 d-flex flex-column">
-                          <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
-                            <h3>Loesje Bitola</h3>
-                            <div class="ci-text">
-                              <div><i class="fa fa-phone-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>+61 383 767 284</span></div>
-                              <div><i class="fa fa-map-marker-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>245 Quigley Blvd, Ste K</span></div>
-                              <div><i class="fa fa-envelope mr-3 mb-3"></i>&nbsp;&nbsp;<span>info@loesjebitola.com</span></div>
-                              <div><i class="fa fa-link mr-3"></i>&nbsp;&nbsp;<a class="ci-text" href="#" title="Partner Title" target="_blank">Linktree</a></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-md-6 col-sm-12 gap-1 mb-3">
-                    <div class="card">
-                      <div class="card-body d-flex justify-content-between my-5">
-                        <div class="col-5 border-right d-flex justify-content-center align-items-center">
-                          <img src="{% get_media_prefix %}partners/gnu.png" alt="GNU" style="object-fit:cover" />
-                        </div>
-                        <div class="col-7 d-flex flex-column">
-                          <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
-                            <h3>GNU</h3>
-                            <div class="ci-text">
-                              <div><i class="fa fa-phone-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>+61 383 767 284</span></div>
-                              <div><i class="fa fa-map-marker-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>245 Quigley Blvd, Ste K</span></div>
-                              <div><i class="fa fa-envelope mr-3 mb-3"></i>&nbsp;&nbsp;<span>info@gnu.com</span></div>
-                              <div><i class="fa fa-link mr-3"></i>&nbsp;&nbsp;<a class="ci-text" href="#" title="Partner Title" target="_blank">Linktree</a></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-                
             </div>
-          </div>
         </section>
         <!-- End Contact Section -->
 {% endblock content %}        

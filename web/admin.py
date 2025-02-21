@@ -76,7 +76,7 @@ class ObjectiveAdmin(admin.ModelAdmin):
 
 class SpecificObjectiveAdmin(admin.ModelAdmin):
     list_display = ["objective", "title", "description"]
-    fields = ["title", "description"]
+    fields = ["objective", "title", "description"]
 
     def has_add_permission(self, request):
         count = SpecificObjective.objects.all().count()

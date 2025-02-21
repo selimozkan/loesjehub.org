@@ -32,6 +32,9 @@ class AboutView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["header"] = PageHeader.objects.get(page="about")
+        context["about"] = About.objects.first()
+        context["objectives"] = Objective.objects.all()
+        context["specific_objectives"] = SpecificObjective.objects.all()
         return context
 
 
@@ -73,6 +76,7 @@ class ResourcesView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["header"] = PageHeader.objects.get(page="resources")
+        context["resources"] = Resource.objects.all()
         return context
 
 
@@ -82,6 +86,7 @@ class ContactView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["header"] = PageHeader.objects.get(page="contact")
+        context["contacts"] = Contact.objects.all()
         return context
 
 
