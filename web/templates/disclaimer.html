@@ -8,10 +8,22 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="wow fadeInUpShort" data-wow-delay=".1s">
-                        <h1 class="hs-line-7 mb-20 mb-xs-10">{{ header.page_title}}</h1>
+                        <h1 class="hs-line-7 mb-20 mb-xs-10">
+                        {% if header.page_title %}
+                            {{ header.page_title}}
+                        {% else %}
+                            Disclaimer
+                        {% endif %}
+                        </h1>
                     </div>
                     <div class="wow fadeInUpShort" data-wow-delay=".2s">
-                        <p class="hs-line-6 opacity-075 mb-20 mb-xs-0">{{ header.page_description}}</p>
+                        <p class="hs-line-6 opacity-075 mb-20 mb-xs-0">
+                        {% if header.page_description %}
+                            {{ header.page_description}}
+                        {% else %}
+                            Disclaimer Text    
+                        {% endif %}
+                        </p>
                     </div>
                 </div>
             </div>
@@ -25,7 +37,7 @@
         <div class="container relative">
             <div class="row">
                 <div class="col-12">
-                    Disclaimer text
+                    {{ disclaimer.0 | safe}}
                 </div>
             </div>
         </div>

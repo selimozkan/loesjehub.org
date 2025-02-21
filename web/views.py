@@ -40,7 +40,11 @@ class PartnersView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["header"] = PageHeader.objects.get(page="partners")
+        try:
+            context["header"] = PageHeader.objects.get(page="partners")
+        except PageHeader.DoesNotExist:
+            context["header"] = None
+        context["partners"] = Partner.objects.all()
         return context
 
 
@@ -101,7 +105,13 @@ class PrivacyPolicyView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["header"] = PageHeader.objects.get(page="privacy")
+        try:
+            context["header"] = PageHeader.objects.get(page="privacy")
+        except PageHeader.DoesNotExist:
+            context["header"] = None
+        context["privacy"] = HomePage.objects.filter().values_list(
+            "privacy_policy", flat=True
+        )
         return context
 
 
@@ -110,5 +120,11 @@ class DisclaimerView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["header"] = PageHeader.objects.get(page="disclaimer")
+        try:
+            context["header"] = PageHeader.objects.get(page="disclaimer")
+        except PageHeader.DoesNotExist:
+            context["header"] = None
+        context["disclaimer"] = HomePage.objects.filter().values_list(
+            "disclaimer", flat=True
+        )
         return context
