@@ -73,8 +73,9 @@
     <div class="container relative">
         <div class="row">
             {% for partner in partners %}
-            <div class="col-12 article active" id="{{ partner.name }}">
+            <div class="col-12 article{% if forloop.first %} active{% endif %}" id="{{ partner.name }}">
                 {{ partner.long_description | safe }}
+                <p>Please find more information here: <a href="{{ partner.linktree }}" target="_blank" rel="noopener noreferrer">Linktree</a></p>
             </div>
             {% endfor %}
         </div>
