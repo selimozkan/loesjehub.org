@@ -2,217 +2,230 @@
 {% load static %}
 
 {% block content %}
-        <!-- Home Section -->
-        <section class="small-section bg-dark-alfa-50 bg-scroll light-content mb-5" data-background="{% get_media_prefix %}{{ header.page_image }}" id="home">
-          <div class="container relative pt-70">
+    <style>
+        .active {
+            background-color: #198754 !important;
+            color: #fff !important;
+        }
+        .active:hover {
+            background-color: #fff !important;
+            color: #198754 !important;
+        }
+    </style>
+    <!-- Home Section -->
+    <section class="small-section bg-dark-alfa-50 bg-scroll light-content mb-5" data-background="{% get_media_prefix %}{{ header.page_image }}" id="home">
+        <div class="container relative pt-70">
             <div class="row">
-              <div class="col-md-8">
-                <div class="wow fadeInUpShort" data-wow-delay=".1s">
-                  <h1 class="hs-line-7 mb-20 mb-xs-10">{{ header.page_title}}</h1>
+                <div class="col-md-8">
+                    <div class="wow fadeInUpShort" data-wow-delay=".1s">
+                        <h1 class="hs-line-7 mb-20 mb-xs-10">{{ header.page_title}}</h1>
+                    </div>
+                    <div class="wow fadeInUpShort" data-wow-delay=".2s">
+                        <p class="hs-line-6 opacity-075 mb-20 mb-xs-0">
+                        {{ header.page_description}}
+                        </p>
+                    </div>
                 </div>
-                <div class="wow fadeInUpShort" data-wow-delay=".2s">
-                  <p class="hs-line-6 opacity-075 mb-20 mb-xs-0">
-                    {{ header.page_description}}
-                  </p>
-                </div>
-              </div>
             </div>
-          </div>
-        </section>
-        <!-- End Home Section -->
+        </div>
+    </section>
+    <!-- End Home Section -->
         
-        <!-- Section -->
-        <section class="page-section">
-          <div class="container relative">
-            
+    <!-- Section -->
+    <section class="page-section">
+        <div class="container relative">
+        
             <div class="row mb-60 mb-xs-40 d-flex align-items-center">
-              <div class="col-sm-12 col-md-6 d-flex justify-content-md-start gap-1">
-                <button class="btn btn-outline-success" type="button">All</button>
-                <button class="btn btn-outline-success" type="button">Loesje Berlin</button>
-                <button class="btn btn-outline-success" type="button">Loesje Bulgaria</button>
-                <button class="btn btn-outline-success" type="button">Loesje Bitola</button>
-                <button class="btn btn-outline-success" type="button">GNU</button>
-              </div>
-              <div class="col-sm-12 col-md-6 d-flex justify-content-md-end gap-1 mt-3">
-                <button class="btn btn-outline-secondary" type="button">All</button>
-                <button class="btn btn-outline-secondary" type="button">Ongoing</button>
-                <button class="btn btn-outline-secondary" type="button">Past</button>
-              </div>
+                <div class="col-sm-12 col-md-6 d-flex justify-content-md-start gap-1">
+                    <button class="btn btn-outline-success filter-category all active" type="button">All</button>
+                    <button class="btn btn-outline-success filter-category berlin" type="button">Loesje Berlin</button>
+                    <button class="btn btn-outline-success filter-category bulgaria" type="button">Loesje Bulgaria</button>
+                    <button class="btn btn-outline-success filter-category bitola" type="button">Loesje Bitola</button>
+                    <button class="btn btn-outline-success filter-category gnu" type="button">GNU</button>
+                </div>
+                <div class="col-sm-12 col-md-6 d-flex justify-content-md-end gap-1 mt-3">
+                    <button class="btn btn-outline-secondary filter-status all active" type="button">All</button>
+                    <button class="btn btn-outline-secondary filter-status ongoing" type="button">Ongoing</button>
+                    <button class="btn btn-outline-secondary filter-status past" type="button">Past</button>
+                </div>
             </div>
             
-            <div class="row">
-          
-              <!-- Post Item -->
-              <div class="col-sm-6 col-md-4 mb-60 mb-xs-40">
+            <div class="row blog-post-row">
+            
+                <!-- Post Item -->
+                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item bulgaria ongoing">
                 
-                <div class="post-prev-img">
-                  <a href="blog-single-sidebar-right.html" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-1.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
+                    <div class="post-prev-img">
+                        <a href="#" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-1.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
+                    </div>
+                    
+                    <h3 class="post-prev-title">
+                        <a href="#">Meet the New Web Design Trends</a>
+                    </h3>
+                    
+                    <div class="post-prev-info">
+                        <span>John Doe | Loesje Bulgaria</span>
+                    </div>
+                    
+                    <div class="post-prev-text">
+                        Lorem ipsum dolor sit amet, rembe adipiscing elite. Inwege maximus ligula semper metusere pellentesque mattis. Maecenas volutpat, diam enime volutpa. 
+                    </div>
+                    
+                    <div class="post-prev-more">
+                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
+                    </div>
+                
                 </div>
+                <!-- End Post Item -->
                 
-                <h3 class="post-prev-title">
-                  <a href="blog-single-sidebar-right.html">Meet the New Web Design Trends</a>
-                </h3>
+                <!-- Post Item -->
+                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item berlin ongoing">
                 
-                <div class="post-prev-info">
-                  <a href="">John Doe</a>
+                    <div class="post-prev-img">
+                        <a href="#" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-2.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
+                    </div>
+                    
+                    <h3 class="post-prev-title">
+                        <a href="#">Minimalistic Product Design</a>
+                    </h3>
+                    
+                    <div class="post-prev-info">
+                        <span>John Doe | Loesje Berlin</span>
+                    </div>
+                    
+                    <div class="post-prev-text">
+                        Proin fringilla augue at maximus vestibulum. Nam pulvi vitae neque et porttitor. Praesent sed nisi eleifend, lorem fermentum ac ante lorem ipsum sit amet. 
+                    </div>
+                    
+                    <div class="post-prev-more">
+                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
+                    </div>
+                
                 </div>
+                <!-- End Post Item -->
                 
-                <div class="post-prev-text">
-                  Lorem ipsum dolor sit amet, rembe adipiscing elite. Inwege maximus ligula semper metusere pellentesque mattis. Maecenas volutpat, diam enime volutpa. 
+                <!-- Post Item -->
+                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item gnu ongoing">
+                
+                    <div class="post-prev-img">
+                        <a href="#" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-3.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
+                    </div>
+                    
+                    <h3 class="post-prev-title">
+                        <a href="#">Clean Style in the Web</a>
+                    </h3>
+                    
+                    <div class="post-prev-info">
+                        <span>John Doe | GNU</span>
+                    </div>
+                    
+                    <div class="post-prev-text">
+                        Ember adipiscing elite curabitur iaculis accumsan augu nec finibus mauris pretium eu. Duis placerat ex gravida nibh tristique ultricies eros lorem blandit. 
+                    </div>
+                    
+                    <div class="post-prev-more">
+                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
+                    </div>
+                
                 </div>
+                <!-- End Post Item -->
                 
-                <div class="post-prev-more">
-                  <a href="blog-single-sidebar-right.html" class="text-link" tabindex="-1">Learn More</a>
+                <!-- Post Item -->
+                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item bitola ongoing">
+                
+                    <div class="post-prev-img">
+                        <a href="#" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-4.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
+                    </div>
+                    
+                    <div class="post-prev-title">
+                        <a href="#">Duis Tristique Condimentum</a>
+                    </div>
+                    
+                    <div class="post-prev-info">
+                        <span>John Doe | Loesje Bitola</span>
+                    </div>
+                    
+                    <div class="post-prev-text">
+                        Lorem ipsum dolor sit amet, rembe adipiscing elite. Inwege maximus ligula semper metusere pellentesque mattis. Maecenas volutpat, diam enime volutpa. 
+                    </div>
+                    
+                    <div class="post-prev-more">
+                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
+                    </div>
+                
                 </div>
+                <!-- End Post Item -->
                 
-              </div>
-              <!-- End Post Item -->
-              
-              <!-- Post Item -->
-              <div class="col-sm-6 col-md-4 mb-60 mb-xs-40">
+                <!-- Post Item -->
+                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item bulgaria ongoing">
                 
-                <div class="post-prev-img">
-                  <a href="blog-single-sidebar-right.html" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-2.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
+                    <div class="post-prev-img">
+                        <a href="#" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-5.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
+                    </div>
+                    
+                    <h3 class="post-prev-title">
+                        <a href="#">Meet the New Web Design Trends</a>
+                    </h3>
+                    
+                    <div class="post-prev-info">
+                        <span>John Doe | Loesje Bulgaria</span>
+                    </div>
+                    
+                    <div class="post-prev-text">
+                        Lorem ipsum dolor sit amet, rembe adipiscing elite. Inwege maximus ligula semper metusere pellentesque mattis. Maecenas volutpat, diam enime volutpa. 
+                    </div>
+                    
+                    <div class="post-prev-more">
+                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
+                    </div>
+                
                 </div>
+                <!-- End Post Item -->
                 
-                <h3 class="post-prev-title">
-                  <a href="blog-single-sidebar-right.html">Minimalistic Product Design</a>
-                </h3>
+                <!-- Post Item -->
+                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item berlin past">
                 
-                <div class="post-prev-info">
-                  <a href="">John Doe</a> • 9 December
+                    <div class="post-prev-img">
+                        <a href="#" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-6.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
+                    </div>
+                    
+                    <h3 class="post-prev-title">
+                        <a href="#">Minimalistic Product Design</a>
+                    </h3>
+                    
+                    <div class="post-prev-info">
+                        <span>John Doe | Loesje Berlin</span>
+                    </div>
+                    
+                    <div class="post-prev-text">
+                        Proin fringilla augue at maximus vestibulum. Nam pulvi vitae neque et porttitor. Praesent sed nisi eleifend, lorem fermentum ac ante lorem ipsum sit amet. 
+                    </div>
+                    
+                    <div class="post-prev-more">
+                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
+                    </div>
+                
                 </div>
-                
-                <div class="post-prev-text">
-                  Proin fringilla augue at maximus vestibulum. Nam pulvi vitae neque et porttitor. Praesent sed nisi eleifend, lorem fermentum ac ante lorem ipsum sit amet. 
-                </div>
-                
-                <div class="post-prev-more">
-                  <a href="blog-single-sidebar-right.html" class="text-link" tabindex="-1">Learn More</a>
-                </div>
-                
-              </div>
-              <!-- End Post Item -->
-              
-              <!-- Post Item -->
-              <div class="col-sm-6 col-md-4 mb-60 mb-xs-40">
-                
-                <div class="post-prev-img">
-                  <a href="blog-single-sidebar-right.html" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-3.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
-                </div>
-                
-                <h3 class="post-prev-title">
-                  <a href="blog-single-sidebar-right.html">Clean Style in the Web</a>
-                </h3>
-                
-                <div class="post-prev-info">
-                  <a href="">John Doe</a> • 7 December
-                </div>
-                
-                <div class="post-prev-text">
-                  Ember adipiscing elite curabitur iaculis accumsan augu nec finibus mauris pretium eu. Duis placerat ex gravida nibh tristique ultricies eros lorem blandit. 
-                </div>
-                
-                <div class="post-prev-more">
-                  <a href="blog-single-sidebar-right.html" class="text-link" tabindex="-1">Learn More</a>
-                </div>
-                
-              </div>
-              <!-- End Post Item -->
-              
-              <!-- Post Item -->
-              <div class="col-sm-6 col-md-4 mb-60 mb-xs-40">
-                
-                <div class="post-prev-img">
-                  <a href="blog-single-sidebar-right.html" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-4.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
-                </div>
-                
-                <div class="post-prev-title">
-                  <a href="blog-single-sidebar-right.html">Duis Tristique Condimentum</a>
-                </div>
-                
-                <div class="post-prev-info">
-                  <a href="">John Doe</a>
-                </div>
-                
-                <div class="post-prev-text">
-                  Lorem ipsum dolor sit amet, rembe adipiscing elite. Inwege maximus ligula semper metusere pellentesque mattis. Maecenas volutpat, diam enime volutpa. 
-                </div>
-                
-                <div class="post-prev-more">
-                  <a href="blog-single-sidebar-right.html" class="text-link" tabindex="-1">Learn More</a>
-                </div>
-                
-              </div>
-              <!-- End Post Item -->
-              
-              <!-- Post Item -->
-              <div class="col-sm-6 col-md-4 mb-60 mb-xs-40">
-                
-                <div class="post-prev-img">
-                  <a href="blog-single-sidebar-right.html" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-5.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
-                </div>
-                
-                <h3 class="post-prev-title">
-                  <a href="blog-single-sidebar-right.html">Meet the New Web Design Trends</a>
-                </h3>
-                
-                <div class="post-prev-info">
-                  <a href="">John Doe</a>
-                </div>
-                
-                <div class="post-prev-text">
-                  Lorem ipsum dolor sit amet, rembe adipiscing elite. Inwege maximus ligula semper metusere pellentesque mattis. Maecenas volutpat, diam enime volutpa. 
-                </div>
-                
-                <div class="post-prev-more">
-                  <a href="blog-single-sidebar-right.html" class="text-link" tabindex="-1">Learn More</a>
-                </div>
-                
-              </div>
-              <!-- End Post Item -->
-              
-              <!-- Post Item -->
-              <div class="col-sm-6 col-md-4 mb-60 mb-xs-40">
-                
-                <div class="post-prev-img">
-                  <a href="blog-single-sidebar-right.html" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-6.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
-                </div>
-                
-                <h3 class="post-prev-title">
-                  <a href="blog-single-sidebar-right.html">Minimalistic Product Design</a>
-                </h3>
-                
-                <div class="post-prev-info">
-                  <a href="">John Doe</a> • 9 December
-                </div>
-                
-                <div class="post-prev-text">
-                  Proin fringilla augue at maximus vestibulum. Nam pulvi vitae neque et porttitor. Praesent sed nisi eleifend, lorem fermentum ac ante lorem ipsum sit amet. 
-                </div>
-                
-                <div class="post-prev-more">
-                  <a href="blog-single-sidebar-right.html" class="text-link" tabindex="-1">Learn More</a>
-                </div>
-                
-              </div>
-              <!-- End Post Item -->
+                <!-- End Post Item -->
             </div>
             
             <!-- Pagination -->
             <div class="pagination mt-30 mt-xs-10">
-              <a href=""><i class="fa fa-chevron-left"></i></a>
-              <a href="" class="active">1</a>
-              <a href="">2</a>
-              <a href="">3</a>
-              <a class="no-active">...</a>
-              <a href="">9</a>
-              <a href=""><i class="fa fa-chevron-right"></i></a>
+                <a href=""><i class="fa fa-chevron-left"></i></a>
+                <a href="" class="active">1</a>
+                <a href="">2</a>
+                <a href="">3</a>
+                <a class="no-active">...</a>
+                <a href="">9</a>
+                <a href=""><i class="fa fa-chevron-right"></i></a>
             </div>
             <!-- End Pagination -->
-            
-          </div>
-        </section>
-        <!-- End Section -->
+        
+        </div>
+    </section>
+    <!-- End Section -->
 
+    <script>
+
+    </script>
 {% endblock content %}

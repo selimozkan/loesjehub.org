@@ -22,6 +22,7 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["home"] = HomePage.objects.first()
         context["objectives"] = Objective.objects.all()
+        context["latest_projects"] = Project.objects.all().order_by("-updated_at")[:3]
         return context
 
 
@@ -49,6 +50,16 @@ class ProjectsView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["header"] = PageHeader.objects.get(page="projects")
+        return context
+
+
+class ProjectDetailView(TemplateView):
+    template_name = "project_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["header"] = PageHeader.objects.get(page="projects")
+        context["project"] = Project.objects.get(slug=kwargs["slug"])
         return context
 
 

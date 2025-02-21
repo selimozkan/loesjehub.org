@@ -9,6 +9,11 @@ urlpatterns = [
     path("about/", views.AboutView.as_view(), name="about"),
     path("partners/", views.PartnersView.as_view(), name="partners"),
     path("projects/", views.ProjectsView.as_view(), name="projects"),
+    path(
+        "project-detail/<slug:slug>/",
+        views.ProjectDetailView.as_view(),
+        name="project-detail",
+    ),
     path("resources/", views.ResourcesView.as_view(), name="resources"),
     path("contact/", views.ContactView.as_view(), name="contact"),
     path("impressum/", views.ImpressumView.as_view(), name="impressum"),
