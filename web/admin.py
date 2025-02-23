@@ -145,9 +145,9 @@ class ResourceAdmin(admin.ModelAdmin):
 
 
 class ContactAdmin(admin.ModelAdmin):
-    list_display = ["thumb", "title", "phone", "email", "linktree"]
+    list_display = ["thumb", "title", "linktree"]
     list_display_links = ("thumb", "title")
-    fields = ["img", "image", "title", "phone", "address", "email", "linktree"]
+    fields = ["img", "image", "title", "linktree"]
     readonly_fields = [
         "img",
     ]

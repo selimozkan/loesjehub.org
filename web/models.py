@@ -387,9 +387,6 @@ class Contact(models.Model):
         ],
     )
     title = models.CharField(max_length=75, null=True, blank=True)
-    phone = models.CharField(max_length=25, null=True, blank=True)
-    address = models.CharField(max_length=150, null=True, blank=True)
-    email = models.EmailField(null=True, blank=True)
     linktree = models.URLField(null=True, blank=True)
 
     class Meta:

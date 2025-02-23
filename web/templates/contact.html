@@ -40,9 +40,9 @@
                                             <div class="contact-item wow fadeScaleIn" data-wow-delay="0" data-wow-duration="1s">
                                                 <h3>{{ contact.title }}</h3>
                                                 <div class="ci-text">
-                                                    <div><i class="fa fa-phone-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>{{ contact.phone }}</span></div>
+                                                    {% comment %} <div><i class="fa fa-phone-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>{{ contact.phone }}</span></div>
                                                     <div><i class="fa fa-map-marker-alt mr-3 mb-3"></i>&nbsp;&nbsp;<span>{{ contact.address }}</span></div>
-                                                    <div><i class="fa fa-envelope mr-3 mb-3"></i>&nbsp;&nbsp;<span>{{ contact.email }}</span></div>
+                                                    <div><i class="fa fa-envelope mr-3 mb-3"></i>&nbsp;&nbsp;<span>{{ contact.email }}</span></div> {% endcomment %}
                                                     <div><i class="fa fa-link mr-3"></i>&nbsp;&nbsp;<a class="ci-text" href="{{ contact.linktree }}" title="{{ contact.title }}" target="_blank">Linktree</a></div>
                                                 </div>
                                             </div>
