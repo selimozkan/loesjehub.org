@@ -9,25 +9,6 @@ import random
 from tinymce.models import HTMLField
 from multiselectfield import MultiSelectField
 
-PARTNER_CHOICES = (
-    ("berlin", "Loesje Berlin"),
-    ("bulgaria", "Loesje Bulgaria"),
-    ("bitola", "Loesje Bitola"),
-    ("gnu", "GNU"),
-)
-PROJECT_STATUS_CHOICES = (("ongoing", "Ongoing"), ("past", "Past"))
-
-PAGE_CHOICES = (
-    ("about", "ABOUT THE PROJECT"),
-    ("partners", "PARTNERS"),
-    ("projects", "PROJECTS"),
-    ("resources", "RESOURCES"),
-    ("contact", "CONTACT"),
-    ("impressum", "IMPRESSUM"),
-    ("privacy", "PRIVACY POLICY"),
-    ("disclaimer", "DISCLAIMER"),
-)
-
 
 def create_slug(title):
     slug = slugify(title)
@@ -52,6 +33,17 @@ class GeneralSetting(models.Model):
 
 
 class PageHeader(models.Model):
+    PAGE_CHOICES = (
+        ("about", "ABOUT THE PROJECT"),
+        ("partners", "PARTNERS"),
+        ("projects", "PROJECTS"),
+        ("resources", "RESOURCES"),
+        ("contact", "CONTACT"),
+        ("impressum", "IMPRESSUM"),
+        ("privacy", "PRIVACY POLICY"),
+        ("disclaimer", "DISCLAIMER"),
+    )
+
     page = models.CharField(
         "Related Page",
         max_length=25,
@@ -280,6 +272,13 @@ class Partner(models.Model):
 
 
 class Project(models.Model):
+    PARTNER_CHOICES = (
+        ("berlin", "Loesje Berlin"),
+        ("bulgaria", "Loesje Bulgaria"),
+        ("bitola", "Loesje Bitola"),
+        ("gnu", "GNU"),
+    )
+
     image = models.ImageField(
         upload_to="projects/",
         null=True,

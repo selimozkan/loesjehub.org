@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load custom_filters %}
 
 {% block content %}
     <style>
@@ -34,198 +35,90 @@
     <!-- Section -->
     <section class="page-section">
         <div class="container relative">
-        
+            <input type="hidden" name="category" id="category" value="all">
+            <input type="hidden" name="status" id="status" value="all">
             <div class="row mb-60 mb-xs-40 d-flex align-items-center">
                 <div class="col-sm-12 col-md-6 d-flex justify-content-md-start gap-1">
-                    <button class="btn btn-outline-success filter-category all active" type="button">All</button>
-                    <button class="btn btn-outline-success filter-category berlin" type="button">Loesje Berlin</button>
-                    <button class="btn btn-outline-success filter-category bulgaria" type="button">Loesje Bulgaria</button>
-                    <button class="btn btn-outline-success filter-category bitola" type="button">Loesje Bitola</button>
-                    <button class="btn btn-outline-success filter-category gnu" type="button">GNU</button>
+                    <button class="btn btn-outline-success filter-category all active" type="button" onclick="categoryFilter('all')">All</button>
+                    <button class="btn btn-outline-success filter-category berlin" type="button" onclick="categoryFilter('berlin')">Loesje Berlin</button>
+                    <button class="btn btn-outline-success filter-category bulgaria" type="button" onclick="categoryFilter('bulgaria')">Loesje Bulgaria</button>
+                    <button class="btn btn-outline-success filter-category bitola" type="button" onclick="categoryFilter('bitola')">Loesje Bitola</button>
+                    <button class="btn btn-outline-success filter-category gnu" type="button" onclick="categoryFilter('gnu')">GNU</button>
                 </div>
                 <div class="col-sm-12 col-md-6 d-flex justify-content-md-end gap-1 mt-3">
-                    <button class="btn btn-outline-secondary filter-status all active" type="button">All</button>
-                    <button class="btn btn-outline-secondary filter-status ongoing" type="button">Ongoing</button>
-                    <button class="btn btn-outline-secondary filter-status past" type="button">Past</button>
+                    <button class="btn btn-outline-secondary filter-status all active" type="button" onclick="statusFilter('all')">All</button>
+                    <button class="btn btn-outline-secondary filter-status ongoing" type="button" onclick="statusFilter('ongoing')">Ongoing</button>
+                    <button class="btn btn-outline-secondary filter-status past" type="button" onclick="statusFilter('past')">Past</button>
                 </div>
             </div>
             
             <div class="row blog-post-row">
-            
+                {% for project in object_list %}
                 <!-- Post Item -->
-                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item bulgaria ongoing">
-                
+                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item {{ project.partners | partners_list }} {{ project.ongoing | status_filter }}">
                     <div class="post-prev-img">
-                        <a href="#" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-1.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
+                        <a href="{% url 'project-detail' project.slug %}" tabindex="-1"><img src="{{ project.image.url }}" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
                     </div>
                     
                     <h3 class="post-prev-title">
-                        <a href="#">Meet the New Web Design Trends</a>
+                        <a href="{% url 'project-detail' project.slug %}">{{ project.title }}</a>
                     </h3>
                     
                     <div class="post-prev-info">
-                        <span>John Doe | Loesje Bulgaria</span>
+                        <span>{{ project.author | title }} • {{ project.partners }}</span>
                     </div>
                     
                     <div class="post-prev-text">
-                        Lorem ipsum dolor sit amet, rembe adipiscing elite. Inwege maximus ligula semper metusere pellentesque mattis. Maecenas volutpat, diam enime volutpa. 
+                        {{ project.description }} 
                     </div>
                     
                     <div class="post-prev-more">
-                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
+                        <a href="{% url 'project-detail' project.slug %}" class="text-link" tabindex="-1">Learn More</a>
                     </div>
-                
                 </div>
                 <!-- End Post Item -->
-                
-                <!-- Post Item -->
-                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item berlin ongoing">
-                
-                    <div class="post-prev-img">
-                        <a href="#" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-2.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
-                    </div>
-                    
-                    <h3 class="post-prev-title">
-                        <a href="#">Minimalistic Product Design</a>
-                    </h3>
-                    
-                    <div class="post-prev-info">
-                        <span>John Doe | Loesje Berlin</span>
-                    </div>
-                    
-                    <div class="post-prev-text">
-                        Proin fringilla augue at maximus vestibulum. Nam pulvi vitae neque et porttitor. Praesent sed nisi eleifend, lorem fermentum ac ante lorem ipsum sit amet. 
-                    </div>
-                    
-                    <div class="post-prev-more">
-                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
-                    </div>
-                
-                </div>
-                <!-- End Post Item -->
-                
-                <!-- Post Item -->
-                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item gnu ongoing">
-                
-                    <div class="post-prev-img">
-                        <a href="#" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-3.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
-                    </div>
-                    
-                    <h3 class="post-prev-title">
-                        <a href="#">Clean Style in the Web</a>
-                    </h3>
-                    
-                    <div class="post-prev-info">
-                        <span>John Doe | GNU</span>
-                    </div>
-                    
-                    <div class="post-prev-text">
-                        Ember adipiscing elite curabitur iaculis accumsan augu nec finibus mauris pretium eu. Duis placerat ex gravida nibh tristique ultricies eros lorem blandit. 
-                    </div>
-                    
-                    <div class="post-prev-more">
-                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
-                    </div>
-                
-                </div>
-                <!-- End Post Item -->
-                
-                <!-- Post Item -->
-                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item bitola ongoing">
-                
-                    <div class="post-prev-img">
-                        <a href="#" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-4.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
-                    </div>
-                    
-                    <div class="post-prev-title">
-                        <a href="#">Duis Tristique Condimentum</a>
-                    </div>
-                    
-                    <div class="post-prev-info">
-                        <span>John Doe | Loesje Bitola</span>
-                    </div>
-                    
-                    <div class="post-prev-text">
-                        Lorem ipsum dolor sit amet, rembe adipiscing elite. Inwege maximus ligula semper metusere pellentesque mattis. Maecenas volutpat, diam enime volutpa. 
-                    </div>
-                    
-                    <div class="post-prev-more">
-                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
-                    </div>
-                
-                </div>
-                <!-- End Post Item -->
-                
-                <!-- Post Item -->
-                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item bulgaria ongoing">
-                
-                    <div class="post-prev-img">
-                        <a href="#" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-5.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
-                    </div>
-                    
-                    <h3 class="post-prev-title">
-                        <a href="#">Meet the New Web Design Trends</a>
-                    </h3>
-                    
-                    <div class="post-prev-info">
-                        <span>John Doe | Loesje Bulgaria</span>
-                    </div>
-                    
-                    <div class="post-prev-text">
-                        Lorem ipsum dolor sit amet, rembe adipiscing elite. Inwege maximus ligula semper metusere pellentesque mattis. Maecenas volutpat, diam enime volutpa. 
-                    </div>
-                    
-                    <div class="post-prev-more">
-                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
-                    </div>
-                
-                </div>
-                <!-- End Post Item -->
-                
-                <!-- Post Item -->
-                <div class="col-sm-6 col-md-4 mb-60 mb-xs-40 blog-post-item berlin past">
-                
-                    <div class="post-prev-img">
-                        <a href="#" tabindex="-1"><img src="{% get_media_prefix %}projects/post-prev-6.jpg" alt="" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
-                    </div>
-                    
-                    <h3 class="post-prev-title">
-                        <a href="#">Minimalistic Product Design</a>
-                    </h3>
-                    
-                    <div class="post-prev-info">
-                        <span>John Doe | Loesje Berlin</span>
-                    </div>
-                    
-                    <div class="post-prev-text">
-                        Proin fringilla augue at maximus vestibulum. Nam pulvi vitae neque et porttitor. Praesent sed nisi eleifend, lorem fermentum ac ante lorem ipsum sit amet. 
-                    </div>
-                    
-                    <div class="post-prev-more">
-                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
-                    </div>
-                
-                </div>
-                <!-- End Post Item -->
+                {% endfor %}
             </div>
-            
-            <!-- Pagination -->
-            <div class="pagination mt-30 mt-xs-10">
-                <a href=""><i class="fa fa-chevron-left"></i></a>
-                <a href="" class="active">1</a>
-                <a href="">2</a>
-                <a href="">3</a>
-                <a class="no-active">...</a>
-                <a href="">9</a>
-                <a href=""><i class="fa fa-chevron-right"></i></a>
-            </div>
-            <!-- End Pagination -->
-        
         </div>
     </section>
     <!-- End Section -->
 
     <script>
-
+        function categoryFilter(category) {
+            const buttons = document.querySelectorAll('.filter-category');
+            buttons.forEach((button) => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`.filter-category.${category}`).classList.add('active');
+            const categoryInput = document.getElementById('category');
+            categoryInput.value = category;
+            applyFilters();
+        }
+        function statusFilter(status) {
+            const buttons = document.querySelectorAll('.filter-status');
+            buttons.forEach((button) => {
+                button.classList.remove('active');
+            });
+            document.querySelector(`.filter-status.${status}`).classList.add('active');
+            const statusInput = document.getElementById('status');
+            statusInput.value = status;
+            applyFilters();
+        }
+        function applyFilters() {
+            const category = document.getElementById('category').value;
+            const status = document.getElementById('status').value;
+            const posts = document.querySelectorAll('.blog-post-item');
+            posts.forEach((post) => {
+                if (category === 'all' || post.classList.contains(category)) {
+                    if (status === 'all' || post.classList.contains(status)) {
+                        post.style.display = 'block';
+                    } else {
+                        post.style.display = 'none';
+                    }
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        }
     </script>
 {% endblock content %}

@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView, DetailView
 
 from .models import (
     GeneralSetting,
@@ -22,7 +22,9 @@ class HomeView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["home"] = HomePage.objects.first()
         context["objectives"] = Objective.objects.all()
-        context["latest_projects"] = Project.objects.all().order_by("-updated_at")[:3]
+        context["latest_projects"] = Project.objects.all().order_by(
+            "-created_at", "-updated_at"
+        )[:3]
         return context
 
 
@@ -51,7 +53,10 @@ class PartnersView(TemplateView):
         return context
 
 
-class ProjectsView(TemplateView):
+class ProjectsView(ListView):
+    model = Project
+    context_object_name = "projects"
+    # paginate_by = 6
     template_name = "projects.html"
 
     def get_context_data(self, **kwargs):
@@ -60,13 +65,14 @@ class ProjectsView(TemplateView):
         return context
 
 
-class ProjectDetailView(TemplateView):
+class ProjectDetailView(DetailView):
+    model = Project
+    context_object_name = "project"
     template_name = "project_detail.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["header"] = PageHeader.objects.get(page="projects")
-        context["project"] = Project.objects.get(slug=kwargs["slug"])
         return context
 
 

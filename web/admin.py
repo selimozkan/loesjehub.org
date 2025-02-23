@@ -85,6 +85,7 @@ class SpecificObjectiveAdmin(admin.ModelAdmin):
 
 class AboutAdmin(admin.ModelAdmin):
     list_display = ["thumb", "description"]
+    list_display_links = ("thumb", "description")
     fields = ["img", "image", "description"]
     readonly_fields = [
         "img",
@@ -96,6 +97,7 @@ class AboutAdmin(admin.ModelAdmin):
 
 class PartnerAdmin(admin.ModelAdmin):
     list_display = ["thumb", "name", "short_description", "linktree"]
+    list_display_links = ("thumb", "name")
     fields = [
         "img",
         "image",
@@ -115,6 +117,7 @@ class PartnerAdmin(admin.ModelAdmin):
 
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ["thumb", "author", "title", "ongoing", "created_at", "updated_at"]
+    list_display_links = ("thumb", "author", "title")
     fields = [
         "img",
         "image",
@@ -134,6 +137,7 @@ class ProjectAdmin(admin.ModelAdmin):
 
 class ResourceAdmin(admin.ModelAdmin):
     list_display = ["thumb", "title", "link"]
+    list_display_links = ("thumb", "title")
     fields = ["img", "image", "title", "description", "link"]
     readonly_fields = [
         "img",
@@ -142,6 +146,7 @@ class ResourceAdmin(admin.ModelAdmin):
 
 class ContactAdmin(admin.ModelAdmin):
     list_display = ["thumb", "title", "phone", "email", "linktree"]
+    list_display_links = ("thumb", "title")
     fields = ["img", "image", "title", "phone", "address", "email", "linktree"]
     readonly_fields = [
         "img",

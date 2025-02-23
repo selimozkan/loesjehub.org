@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <!-- Home Section -->
+    <section class="small-section bg-dark-alfa-50 bg-scroll light-content mb-5" data-background="{% get_media_prefix %}{{ header.page_image }}" id="home">
+        <div class="container relative pt-70">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="wow fadeInUpShort" data-wow-delay=".1s">
+                        <h1 class="hs-line-7 mb-20 mb-xs-10">
+                            Project Detail
+                        </h1>
+                    </div>
+                    <div class="wow fadeInUpShort" data-wow-delay=".2s">
+                        <p class="hs-line-6 opacity-075 mb-20 mb-xs-0">
+                            Detailed article of: {{ project.title | safe }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Home Section -->
+    
+    
+    <!-- Project Detail Section -->
+    <section class="page-section pt-0 mt-5">
+        <div class="container relative">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="mb-20">{{ project.title | safe }}</h1>
+                    <p class="mb-20 text-muted">{{ project.author | title }} • {{ project.partners }}</p>
+                    <div>
+                        {{ project.article | safe }}
+                    </div>
+                    <div class="mt-80 mt-sm-50">
+                        <a href="{% url 'projects' %}">&#8592; Back to Projects</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Project Detail Section -->     
+    
+{% endblock content %}
