@@ -79,15 +79,15 @@
                 <!-- Post Item -->
                 <div class="col-sm-6 col-md-3 col-lg-3 mb-md-50">
                     <div class="post-prev-img">
-                        <a href="#" tabindex="-1"><img src="{{ project.image.url }}" alt="{{ project.title }}" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
+                        <a href="{% url 'project-detail' project.slug %}" tabindex="-1"><img src="{{ project.image.url }}" alt="{{ project.title }}" class="wow scaleOutIn" data-wow-duration="1.2s" /></a>
                     </div>
                     
                     <h3 class="post-prev-title">
-                        <a href="#">{{ project.title }}</a>
+                        <a href="{% url 'project-detail' project.slug %}">{{ project.title }}</a>
                     </h3>
                     
                     <div class="post-prev-info">
-                        <span>{{ project.author | title }}</span> • <a href="#">{{ project.partners }}</a>
+                        <span class="text-muted">{{ project.author | title }}</span> • <span class="text-muted">{{ project.partners }}</span>
                     </div>
                     
                     <div class="post-prev-text">
@@ -95,7 +95,7 @@
                     </div>
                     
                     <div class="post-prev-more">
-                        <a href="#" class="text-link" tabindex="-1">Learn More</a>
+                        <a href="{% url 'project-detail' project.slug %}" class="text-link" tabindex="-1">Learn More</a>
                     </div>
                 </div>
                 <!-- End Post Item -->
